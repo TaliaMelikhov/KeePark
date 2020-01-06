@@ -1,0 +1,33 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using KeePark.Data
+@inject SignInManager<GeneralUser> SignInManager
+@inject UserManager<GeneralUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+
+    <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/Index", new { area = "" })" method="post" id="logoutForm" class="navbar-right">
+        <ul class="nav navbar-nav navbar-right">
+            <li class="nav-item">
+                @if (User.IsInRole("Administrator"))
+                {
+                    <a class="nav-link js-scroll-trigger" asp-area="" asp-controller="GeneralUsers" asp-action="AdminDashboard">Hello @UserManager.GetUserName(User)</a>
+                }
+                @if (User.Identity.IsAuthenticated && !User.IsInRole("Administrator"))
+                {
+                    <a class="nav-link js-scroll-trigger" asp-area="" asp-controller="GeneralUsers" asp-action="UserProfile">Hello @UserManager.GetUserName(User)</a>
+                }
+            </li>
+            <li class="nav-item">
+                <button type="submit" class="btn btn-link navbar-btn navbar-link" asp-area="Identity" asp-page="/Account/Logout">Logout</button>
+            </li>
+        </ul>
+    </form>
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li class="nav-item"><a class="nav-link js-scroll-trigger" asp-area="Identity" asp-page="/Account/Register">Register</a></li>
+        <li class="nav-item"><a class="nav-link js-scroll-trigger" asp-area="Identity" asp-page="/Account/Login">Login</a></li>
+    </ul>
+}

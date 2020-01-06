@@ -1,0 +1,188 @@
+@model KeePark.Models.ParkingSpot
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var photoPath = "~/SpotImages/" + (Model.filePath ?? "noimage.jpg");
+}
+<style>
+    .mycard {
+        size: 20rem;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        grid-gap: 150px;
+        align-items: stretch;
+    }
+</style>
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>ParkingSpot</h4>
+    <hr />
+    <div class="grid">
+        <div class="mycard">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.SpotName)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.SpotName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Address)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Address)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Price)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Price)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.SpotDescription)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.SpotDescription)
+                </dd>
+            </dl>
+            
+               @{ if (User.IsInRole("Administrator"))
+                   {
+                        <form asp-action="Delete">
+                            <input type="hidden" asp-for="ParkingSpotID" />
+                            <input type="submit" value="Delete" class="btn btn-default" /> |
+                        </form>
+                       }
+                   }
+            
+        </div>
+
+        <div class="card">
+            <img class="card-img-top" src="@photoPath" asp-append-version="true" height="140" width="190" />
+        </div>
+    </div>
+</div>
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /* The Modal (background) */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    .modal-content {
+        position: relative;
+        background-color: #fefefe;
+        margin: auto;
+        padding: 0;
+        border: 1px solid #888;
+        width: 40%;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+        -webkit-animation-name: animatetop;
+        -webkit-animation-duration: 0.4s;
+        animation-name: animatetop;
+        animation-duration: 0.4s
+    }
+
+
+    /* The Close Button */
+    .close {
+        color: white;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+    .modal-header {
+        padding: 2px 16px;
+        background-color: #5cb85c;
+        color: white;
+    }
+
+    .modal-body {
+        padding: 1px 1px;
+    }
+
+    .modal-footer {
+        padding: 1px 1px;
+        background-color: #5cb85c;
+        color: white;
+    }
+</style>
+<body>
+    <!-- The Modal for recomendation system -->
+    <div id="deleteModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h2 class="heading-third section-title text-left">Sorry </h2>
+                <span id="delClose" class="close">&times;</span>
+            </div>
+
+            @if (User.Identity.IsAuthenticated && !User.IsInRole("Administrator"))
+            {
+                <script>
+                    // Get the modal
+                    var delete_modal = document.getElementById("deleteModal");
+                    // Open the modal
+                    delete_modal.style.display = "block";
+                    // Get the <span> element that closes the modal
+                    var span = document.getElementById("delClose");
+                    // When the user clicks on <span> (x), close the modal
+                    span.onclick = function () {
+                        delete_modal.style.display = "none";
+                    }
+                    // When the user clicks anywhere outside of the modal, close it
+                    window.onclick = function (event) {
+                        if (event.target == delete_modal) {
+                            delete_modal.style.display = "none";
+                        }
+                    }
+                </script>
+            }
+
+            @{
+                <div>
+                                <p>
+                                    In Order To Delete Your Spot
+                                    <br />
+                                    Contact With Our Customer Service KeePark@KeePark.com
+                                </p>
+                </div>
+                }
+        </div>
+    </div>
+
+
+</body>

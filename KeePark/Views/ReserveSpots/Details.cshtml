@@ -1,0 +1,106 @@
+﻿@model KeePark.Models.ReserveSpot
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/lib/jquery/dist/jquery.js"></script>
+
+<ul class="list-group list-group-flush">
+    <li class="list-group-item">
+        <h2>Weather</h2>
+        <div id="weather"></div>
+        <p id="name"></p>
+        <p id="temp"></p>
+        <p id="humidity"></p>
+
+        <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALOX8Te8ZntEt5CCkJMymKEZzTcnfsznk&callback=initMap">
+        </script>
+
+        <script>
+            var address = '@Html.DisplayFor(model => model.Spot.Address)';
+            var lat;
+            var lng;
+              function initMap() {
+                  var geocoder = new google.maps.Geocoder();
+                geocoder.geocode({'address': address}, function(results, status) {
+                    if (status === 'OK') {
+                        lat = results[0].geometry.location.lat();
+                        lng = results[0].geometry.location.lng();
+                        weather(lat, lng);
+                    } else {
+                        alert('Geocode was not successful for the following reason: ' + status);
+                    }
+                });
+            }
+           function weather(lt, lg) {
+                $(document).ready(function () {
+                    $.get("https://api.openweathermap.org/data/2.5/weather?lat=" + lt + "&lon=" + lg + "&APPID=010276a0143f95cc47608eb8666c4365&units=metric", function (response) {
+                        //response
+                        console.log(response);
+                      $("#name").text("City: "+response.name);
+                       $("#temp").text("💨 Temperature: "+response.main.temp);
+                        $("#humidity").text("💧 % Humidity:"+response.main.humidity);
+                    });
+                });
+            }
+        </script>
+
+    </li>
+
+
+    <li class="list-group-item">
+
+        <h2>Details Of Your Reservation</h2>
+
+        <dl class="dl-horizontal">
+
+            <dt>
+                @Html.DisplayNameFor(model => model.UserID)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.UserID)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Spot)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Spot.Address)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.CreatedOn)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.CreatedOn)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ReservationDate)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ReservationDate)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ReservationHour)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ReservationHour)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Duration)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Duration)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.carNumber)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.carNumber)
+            </dd>
+        </dl>
+
+
+    </li>
+
+</ul>

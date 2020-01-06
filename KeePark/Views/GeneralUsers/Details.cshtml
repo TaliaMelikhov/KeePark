@@ -1,0 +1,83 @@
+﻿@model KeePark.Data.GeneralUser
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<li class="list-group-item">
+
+    <h2>Details</h2>
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CarType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CarType)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CarNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CarNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CreditCard)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CreditCard)
+        </dd>
+    </dl>
+
+
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.UID">Edit</a> |
+    </div>
+</li>
+
+</ul>

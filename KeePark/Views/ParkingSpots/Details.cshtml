@@ -1,0 +1,141 @@
+@model KeePark.Models.ParkingSpot
+
+@{
+    ViewBag.Title = "Spot Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var photoPath = "~/SpotImages/" + (Model.filePath ?? "noimage.jpg");
+}
+
+<style>
+    #map {
+        height: 400px; /* The height is 400 pixels */
+        width: 500px; /* The width is the width of the web page */
+    }
+
+    .mycard {
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        size: 200rem;
+    }
+
+    .card {
+        width: 100%;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        grid-gap: 200px;
+        align-items: stretch;
+    }
+</style>
+
+<hr />
+
+<div class="grid">
+    <div class="mycard">
+        <div class="mycard">
+            <img class="card-img-top" src="@photoPath" asp-append-version="true" height="400" width="500" />
+        </div>
+    </div>
+
+    <div class="card">
+
+        <!--The div element for the map -->
+        <div id="map"></div>
+        <script>
+            // Initialize and add the map
+            var address = '@Html.DisplayFor(model => model.Address)';
+
+            function initMap() {
+                var geocoder = new google.maps.Geocoder();
+                geocoder.geocode({'address': address}, function(results, status) {
+                    if (status === 'OK') {
+                        var map = new google.maps.Map(document.getElementById('map'), {
+                            zoom: 14,
+                            position: results[0].geometry.location
+                        });
+                        map.setCenter(results[0].geometry.location);
+                        var marker = new google.maps.Marker({
+                            map: map,
+                            position: results[0].geometry.location
+                    });
+                    } else {
+                        alert('Geocode was not successful for the following reason: ' + status);
+                    }
+                });
+            }
+
+        </script>
+        <!--Load the API from the specified URL
+        * The async attribute allows the browser to render the page while the API loads
+        * The key parameter will contain your own API key (which is not needed for this tutorial)
+        * The callback parameter executes the initMap() function
+        -->
+        <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALOX8Te8ZntEt5CCkJMymKEZzTcnfsznk&callback=initMap">
+        </script>
+    </div>
+</div>
+<div class="center">
+    <dt>
+        @Html.DisplayNameFor(model => model.SpotName): @Html.DisplayFor(model => model.SpotName)
+    </dt>
+
+
+    <dt>
+        @Html.DisplayNameFor(model => model.Address): @Html.DisplayFor(model => model.Address)
+    </dt>
+
+    <dt>
+        Parking Description: @Html.DisplayFor(model => model.SpotDescription)
+    </dt>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.Price): @Html.DisplayFor(model => model.Price)
+    </dt>
+    <div class="card-footer text-center">
+        <a asp-controller="home" asp-action="index" class="btn btn-primary">Back</a>
+        <a asp-controller="ParkingSpots" asp-action="Edit" asp-route-id="@Model.ParkingSpotID" class="btn btn-success">Edit</a>
+        <a asp-controller="ParkingSpots" asp-action="Delete" asp-route-id="@Model.ParkingSpotID" class="btn btn-danger">Delete</a>
+        <button onclick="post()" class="btn btn-primary">Share On Facbook</button>
+    </div>
+
+</div>
+
+<script>
+
+    window.fbAsyncInit = function () {
+        FB.init({
+            appId: '778267219277553',
+            autoLogAppEvents: true,
+            xfbml: true,
+            version: 'v4.0'
+        });
+
+    }
+
+
+
+    function post() {
+        FB.ui(
+            {
+                method: 'share',
+                href: 'http://keepark.co',
+                message: "KeePark.co Reserve Parking In Advance",
+                quote: 'I have Just Shared My Own Parking - Check It Out'
+            },
+            // callback
+            function (response) {
+                if (response && !response.error_message) {
+                    alert('Posting completed.');
+                } else {
+                    alert('Error while posting.');
+                }
+            }
+        );
+    }
+</script>
+
+<script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
+

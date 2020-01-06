@@ -1,0 +1,403 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">KeePark</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto my-2 my-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#services">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#portfolio">Common Site's</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a id="Searching-button" class="nav-link" href="/ParkingSpots/ParkingSpotResult">Search</a>
+                </li>
+                <partial name="_LoginPartial" />
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<!-- Masthead -->
+<header class="masthead">
+    <div class="container h-100">
+        <div class="row h-100 align-items-center justify-content-center text-center">
+            <div class="col-lg-10 align-self-end">
+                <h1 class="text-uppercase text-white font-weight-bold">KeePark</h1>
+                <hr class="divider my-4">
+            </div>
+            <div class="col-lg-8 align-self-baseline">
+                <video controls="controls" autoplay width="640" height="360">
+                    <source src="~/video/parkingVideo.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <br />
+                <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More</a>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- About Section -->
+<section class="page-section bg-primary" id="about">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h2 class="text-white mt-0">We've got what you need!</h2>
+                <hr class="divider light my-4">
+                <aside>
+                    <p class="text-white-50 mb-4">With KeePark service, you can easily find parking spots, and also rent your park.</p>
+                </aside>
+                <a id="starting-button" class="btn btn-light btn-xl js-scroll-trigger" href="#">Get Started!</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Services Section -->
+<section class="page-section" id="services">
+    <div class="container">
+        <h2 class="text-center mt-0">At Your Service</h2>
+        <hr class="divider my-4">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="mt-5">
+                    <i class="fas fa-4x fa-chart-pie text-primary mb-4"></i>
+                    <h3 class="h4 mb-2">Manage profits</h3>
+                    <aside>
+                        <p class="text-muted mb-0">Use our charts to manage your parking profits.</p>
+                    </aside>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="mt-5">
+                    <i class="fas fa-4x fa-map text-primary mb-4"></i>
+                    <h3 class="h4 mb-2">Use Google Maps</h3>
+                    <aside>
+                        <p class="text-muted mb-0">
+                            When there is so many parking spots in the world,
+                            our google maps service is here for you.
+                        </p>
+                    </aside>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="mt-5">
+                    <i class="fas fa-4x fa-car text-primary mb-4"></i>
+                    <h3 class="h4 mb-2">Ready to Park</h3>
+                    <aside>
+                        <p class="text-muted mb-0">
+                            You can rent a parking even a month in advance!
+                            Don't Worry. We'll keep it for you.
+                        </p>
+                    </aside>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="mt-5">
+                    <i class="fas fa-4x fa-dollar-sign text-primary mb-4"></i>
+                    <h3 class="h4 mb-2">Rent your parking</h3>
+                    <aside>
+                        <p class="text-muted mb-0">Is it really a revolution if you don't have the chance to make money?</p>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Portfolio Section -->
+<section id="portfolio">
+    <div class="container-fluid p-0">
+        <div class="row no-gutters">
+            <div class="col-lg-4 col-sm-6">
+                <a class="portfolio-box" href="~/img/portfolio/fullsize/beach.jpg">
+                    <img class="img-fluid" src="~/img/portfolio/thumbnails/beach.jpg" alt="">
+                    <div class="portfolio-box-caption">
+                        <div class="project-category text-white-50">
+                            Entertainment
+                        </div>
+                        <div class="project-name">
+                            Rishon Le-Zion Beach
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <a class="portfolio-box" href="~/img/portfolio/fullsize/cinemaCity.png">
+                    <img class="img-fluid" src="img/portfolio/thumbnails/cinemaCity.png" alt="">
+                    <div class="portfolio-box-caption">
+                        <div class="project-category text-white-50">
+                            Movies
+                        </div>
+                        <div class="project-name">
+                            Cinema City
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <a class="portfolio-box" href="~/img/portfolio/fullsize/college.jpg">
+                    <img class="img-fluid" src="img/portfolio/thumbnails/college.jpg" alt="">
+                    <div class="portfolio-box-caption">
+                        <div class="project-category text-white-50">
+                            Academy
+                        </div>
+                        <div class="project-name">
+                            College of Management Academic Studies
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <a class="portfolio-box" href="~/img/portfolio/fullsize/Soho.jpg">
+                    <img class="img-fluid" src="~/img/portfolio/thumbnails/Soho.jpg" alt="">
+                    <div class="portfolio-box-caption">
+                        <div class="project-category text-white-50">
+                            Restaurants
+                        </div>
+                        <div class="project-name">
+                            Soho
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <a class="portfolio-box" href="~/img/portfolio/fullsize/theTeder.jpg">
+                    <img class="img-fluid" src="~/img/portfolio/thumbnails/theTeder.jpg" alt="">
+                    <div class="portfolio-box-caption">
+                        <div class="project-category text-white-50">
+                            Entertainment
+                        </div>
+                        <div class="project-name">
+                            The "Teder"
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <a class="portfolio-box" href="~/img/portfolio/fullsize/yesPlanet.jpg">
+                    <img class="img-fluid" src="~/img/portfolio/thumbnails/yesPlanet.jpg" alt="">
+                    <div class="portfolio-box-caption p-3">
+                        <div class="project-category text-white-50">
+                            Movies
+                        </div>
+                        <div class="project-name">
+                            Yes Planet
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section class="page-section" id="contact">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h2 class="mt-0">Let's Get In Touch!</h2>
+                <hr class="divider my-4">
+                <aside>
+                    <p class="text-muted mb-5">While we're can save you a park in our building, there are simpler ways for us to get in touch and answer your questions.</p>
+                </aside>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 ml-auto text-center mb-5 mb-lg-0">
+                <i class="fas fa-phone fa-3x mb-3 text-muted"></i>
+                <div>054-3974920</div>
+            </div>
+            <div class="col-lg-4 mr-auto text-center">
+                <i class="fas fa-envelope fa-3x mb-3 text-muted"></i>
+                <p>keepark@keepark.com</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Footer -->
+
+<footer class="bg-light py-5">
+    <div class="container">
+        <div class="small text-center text-muted">Copyright &copy; 2019 - KeePark</div>
+        <div class="small text-center text-muted">All Rights Reserve to - Talia Melikhov | Raz Sardas | Aviv Nizri</div>
+    </div>
+</footer>
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Plugin JavaScript -->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+<!-- Custom scripts for this template -->
+<script src="js/creative.min.js"></script>
+<!-- Manipulate the Creating spot event, whether the user logged in or not -->
+<script>
+        $(document).ready(function () {
+            $('#starting-button').on("click", function () {
+                var userAuthorized = @User.Identity.IsAuthenticated.ToString().ToLower();
+                if (userAuthorized) {
+                    $('#starting-button').prop("href", "/parkingspots/Create");
+                }
+                else {
+                    $('#starting-button').prop("href", "/Identity/Account/Login");
+                }
+            });
+    });
+      $(document).ready(function () {
+          $('#Searching-button').on("click", function () {
+                var userAuthorized = @User.Identity.IsAuthenticated.ToString().ToLower();
+                if (userAuthorized) {
+                    $('#Searching-button').prop("href", "/ParkingSpots/ParkingSpotResult");
+                }
+                else {
+                    $('#Searching-button').prop("href", "/Identity/Account/Login");
+                }
+            });
+    });
+</script>
+<!--creating modal which will do 2 things depands if the user logged in or not-->
+<!--if the user logged in than recommendation system will be launched otherwise login panel will pop up-->
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /* The Modal (background) */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    .modal-content {
+        position: relative;
+        background-color: #fefefe;
+        margin: auto;
+        padding: 0;
+        border: 1px solid #888;
+        width: 30%;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+        -webkit-animation-name: animatetop;
+        -webkit-animation-duration: 0.4s;
+        animation-name: animatetop;
+        animation-duration: 0.4s
+    }
+
+    #Spoty{
+        font-weight:bold;
+        font-size:28px;
+        text-align-last:center;
+    }
+    /* The Close Button */
+    .close {
+        color: white;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+    .modal-header {
+        padding: 2px 16px;
+        background-color: #5cb85c;
+        color: white;
+    }
+
+    .modal-body {
+        padding: 1px 1px;
+    }
+
+    .modal-footer {
+        padding: 1px 1px;
+        background-color: #5cb85c;
+        color: white;
+    }
+</style>
+
+<body>
+    <!-- The Modal for recomendation system -->
+    <div id="recomendationModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="heading-third section-title text-center">Here Is A Recommendation For You</h4>
+                <span id="recoClose" class="close">&times;</span>
+            </div>
+
+            @if (User.Identity.IsAuthenticated)
+            {
+                <script>
+                    // Get the modal
+                    var reco_modal = document.getElementById("recomendationModal");
+                    // Open the modal
+                    reco_modal.style.display = "block";
+                    // Get the <span> element that closes the modal
+                    var span = document.getElementById("recoClose");
+                    // When the user clicks on <span> (x), close the modal
+                    span.onclick = function () {
+                        reco_modal.style.display = "none";
+                    }
+                    // When the user clicks anywhere outside of the modal, close it
+                    window.onclick = function (event) {
+                        if (event.target == reco_modal) {
+                            reco_modal.style.display = "none";
+                        }
+                    }
+                </script>
+            }
+
+            @{
+                ParkingSpot spots = ViewBag.recomended;
+                if (spots != null)
+                {
+                        <div class="modal-body">
+
+
+                            <img class="card-img-top" src="~/SpotImages/@spots.filePath" asp-append-version="true" height="200" width="50" />
+                            <p id="Spoty">@spots.SpotName</p>
+                            <p>Address: @spots.Address</p>
+
+                            <p>Price: @spots.Price₪</p>
+                        </div>
+
+                    <div class="modal-footer">
+                        <a asp-controller="ReserveSpots" asp-action="Create" asp-route-id="@spots.ParkingSpotID" class="btn btn-primary m-1">Create Reservation</a>
+                        <a asp-controller="ParkingSpots" asp-action="DetailsFromSearching" asp-route-id="@spots.ParkingSpotID" class="btn btn-primary m-1">View</a>
+                    </div>
+                }}
+        </div>
+    </div>
+
+
+</body>

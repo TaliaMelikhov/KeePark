@@ -1,0 +1,117 @@
+﻿@model IEnumerable<KeePark.Models.ParkingSpot>
+
+@{
+    ViewData["Title"] = "ParkingSpotResult";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<br />
+<form method="get" action="/ParkingSpots/ParkingSpotResult">
+     <input class="searchSpot" type="text" name="spotsName" placeholder="Spot's Name"/>
+     <input class="searchSpot" type="text" name="spotsAddress" placeholder="Spot's Address" />
+     <input class="searchSpot" type="number" min="1" name="spotsPrice" placeholder="Spot's Price" />
+
+    <button class="btn-dark" type="submit" value="search">Search</button>
+</form>
+<br />
+<br />
+<style>
+  
+    .searchSpot{
+        padding-left: 18px;
+        padding-right: 18px;
+        margin:0px 15px 0 15px;
+    }
+    .card a {
+        border: none;
+        outline: 0;
+        padding: 12px;
+        color: white;
+        background-color: #000;
+        text-align: center;
+        cursor: pointer;
+        width: 97%;
+        font-size: 18px;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /* Float four columns side by side */
+    .column {
+        margin: 5px;
+        float: left;
+        width: 25%;
+        padding: 0 10px;
+    }
+
+    /* Remove extra left and right margins, due to padding */
+    .row {
+        margin: 0 -5px;
+        width: auto;
+    }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+    /* Style the counter cards */
+    .card {
+        height: 450px;
+        margin: auto;
+        box-shadow: 8px 8px 8px 8px rgba(0, 0, 0, 0.2);
+        max-width: 300px;
+        margin: auto;
+        text-align: center;
+        font-family: arial;
+    }
+
+    .img {
+        margin: 10px;
+    }
+</style>
+
+<div class="card-deck">
+    <div class="row">
+        @{
+            foreach (var spot in Model)
+            {
+                var photoPath = "~/SpotImages/" + (spot.filePath ?? "noimage.jpg");
+                <div class="column">
+                    <div class="card">
+
+                        <!--<h3>@spot.ParkingSpotID</h3>-->
+                        <h3>@spot.SpotName</h3>
+                        <h4>@spot.Address</h4>
+                        <h4>Price: @spot.Price</h4>
+
+
+                        <img class="card-img-top imageThumbnail" src="@photoPath"
+                             asp-append-version="true" height="250" width="260" />
+                        <p></p>
+                        <div class="card-footer text-center position-static">
+                            <a asp-controller="ReserveSpots" asp-action="Create" asp-route-id="@spot.ParkingSpotID" class="btn-sm">Create Reservation</a>
+                            <a asp-controller="ParkingSpots" asp-action="DetailsFromSearching" asp-route-id="@spot.ParkingSpotID" class="btn-sm">Details</a>
+                            @{
+                                if (User.IsInRole("Administrator"))
+                                {
+                                    <p></p>
+                                    <p></p>
+                                    <a asp-controller="ParkingSpots" asp-action="Delete" asp-route-id="@spot.ParkingSpotID" class="btn btn-danger">Delete</a>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
